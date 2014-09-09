@@ -1,26 +1,31 @@
-var canvas = null, center_x, center_y, width, height
+var canvas,
+    Width, Height,
+    centerX, centerY,
+    period,
+    update,
+    spacePressed,
+    copter,
+    pentas,
+    score
 
 $(document).ready(function() {
-    canvas = $("#game_canvas")
+    canvas = $('#game_canvas')
     
-    width = canvas.width()
-    height = canvas.width()
-    center_x = width / 2
-    center_y = height / 2
+    Width = canvas.width()
+    Height = canvas.height()
+    centerX = Width / 2
+    centerY = Height / 2
     
-    console.log(canvas.width())
+    period = 1000 / 60
     
-    canvas.drawRect({
-        fillStyle : 'black',
-        x : center_x, y : center_y,
-        width : width,
-        height : height
-    })
+    initializeLayers()
     
-    // canvas.drawArc({
-    //     draggable: true,
-    //     fillStyle: "blue",
-    //     x: 100, y: 100,
-    //     radius: 50
-    // })
+    initializeButtonCallbacks()
+    
+    spacePressed = false
+    
+    enterMenu()
+    
+    beginEventLoop()
 })
+
