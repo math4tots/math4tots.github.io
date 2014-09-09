@@ -1,0 +1,27 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+    padding-left: 5em;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+li {
+    margin-top: 19pt;
+    margin-bottom: 19pt;
+}
+
+a {
+    text-decoration: none;
+    font-size: 150%;
+}
+
+canvas {
+    border-style: solid;
+    border-width: medium;
+}
