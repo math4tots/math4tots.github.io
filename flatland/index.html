@@ -12,7 +12,9 @@ var canvas = document.getElementById('game'),
     width = canvas.width,
     height = canvas.height,
     side_length = 20,
-    player = new Firebase('intense-inferno-6472.firebaseio.com/flatland/player');
+    auth = null,
+    firebase = new Firebase('https://intense-inferno-6472.firebaseio.com/flatland/users'),
+    yourself = null;
 
 function drawRectangle(x, y, len_x, len_y, fillStyle) {
   if (fillStyle) context.fillStyle = fillStyle;
@@ -24,32 +26,64 @@ function drawRectangle(x, y, len_x, len_y, fillStyle) {
   context.fill();
 }
 
-function drawPlayer(v) {
+function drawPlayer(v, fillStyle) {
   drawRectangle((width / side_length) * v.x, (height / side_length) * v.y,
-                side_length, side_length, '#FFAFFF');
+                side_length, side_length, fillStyle);
+  context.fillStyle = '#000000'
+  context.fillText(
+      v.letter,
+      side_length/3 + (width / side_length) * v.x,
+      side_length/1.5 + (height / side_length) * v.y);
+}
+
+function drawYourself(v) {
+  drawPlayer(v, '#FFAFFF');
+  console.log('myself');
+  console.log(auth.google.displayName);
+}
+
+function drawSomeoneElse(v) {
+  drawPlayer(v, '#00FFFF');
 }
 
 function drawBackground() {
   drawRectangle(0, 0, width, height, '#00AF5F');
 }
 
-function draw(v) {
-  drawBackground();
-  drawPlayer(v);
-}
+firebase.authWithOAuthPopup('google', function(error, authData) {
+  if (error) console.log('Login Failed!', error);
+  else {
+    console.log('Authenticated successfully with payload:', authData);
+    auth = authData;
+    yourself = firebase.child(authData.uid);
+    yourself.transaction(function (value) {
+      return value || {'x': 0, 'y': 0, 'uid': auth.uid, 'letter': auth.google.displayName[0]};
+    });
+  }
+});
 
-player.transaction(function (value) { return value || {'x': 0, 'y': 0}; });
-player.on('value', function(snapshot) { draw(snapshot.val()); });
+firebase.on('value', function(snapshot) {
+  drawBackground();
+  snapshot.forEach(function(ss) {
+    var v = ss.val();
+    console.log(v);
+    console.log(v && v.uid, auth && auth.uid);
+    console.log(auth && v.uid === auth.uid);
+    if (auth && v.uid === auth.uid) drawYourself(v), console.log(auth.uid);
+    else                          drawSomeoneElse(v);
+  });
+});
 
 $(document).keypress(function(event) {
-  player.transaction(function (value) {
-    console.log(value.x, width, side_length, width/side_length-1)
-    if      (event.which === 'a'.charCodeAt(0) && value.x > 0)                    value.x--;
-    else if (event.which === 'd'.charCodeAt(0) && value.x < width/side_length-1)  value.x++;
-    else if (event.which === 'w'.charCodeAt(0) && value.y > 0)                    value.y--;
-    else if (event.which === 's'.charCodeAt(0) && value.y < height/side_length-1) value.y++;
-    return value;
-  });
+  if (yourself) {
+    yourself.transaction(function (value) {
+      if      (event.which === 'a'.charCodeAt(0) && value.x > 0)                    value.x--;
+      else if (event.which === 'd'.charCodeAt(0) && value.x < width/side_length-1)  value.x++;
+      else if (event.which === 'w'.charCodeAt(0) && value.y > 0)                    value.y--;
+      else if (event.which === 's'.charCodeAt(0) && value.y < height/side_length-1) value.y++;
+      return value;
+    });
+  }
 });
 
 });
