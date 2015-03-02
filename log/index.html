@@ -1,110 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-.fixed-width-text {
-  font-family: 'courier';
-  font-size: 16pt;
-}
-</style>
 <script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-/*
-
-Database Schema
-
-  post (/log/users/[auth.uid]/posts/[post_id]) = {
-    timestamp: number (Firebase.ServerValue.TIMESTAMP),
-    body: string (body of the post)
-  }
-
-*/
-
-var firebase, auth, user, posts;
-
-function log_in() {
-  firebase.authWithOAuthPopup('google', function(error, authData) {
-    if (error) {
-      console.log('Login Failed!', error);
-    } else {
-      console.log('Authenticated successfully with payload:', authData);
-      auth = authData;
-      process_auth();
-    }
-  });
-}
-
-function process_auth() {
-  user = firebase.child('users').child(auth.uid);
-  user.transaction(function (value) {
-    return value || {'posts': {}};
-  });
-
-  posts = user.child('posts');
-  posts.limitToLast(100).on('child_added', function(snapshot) {
-    show_post(snapshot.val());
-  });
-
-  $('#login-name').html(auth.google.displayName);
-  $('#not-logged-in').css('display', 'none');
-  $('#logged-in').css('display', 'block');
-}
-
-function show_post(post) {
-  date_dom = $('<b>');
-  date_dom.text(new Date(post.timestamp));
-
-  body_dom = $('<pre>', {'class': 'fixed-width-text'});
-  body_dom.text(post.body);
-
-  post_dom = $('<div>');
-  post_dom.append(date_dom);
-  post_dom.append(body_dom);
-
-  $('#posts').prepend(post_dom);
-}
-
-function new_post_button_clicked() {
-  posts.push({
-    'timestamp': Firebase.ServerValue.TIMESTAMP,
-    'body': $('#new-post-text').val()
-  });
-  $('#new-post-text').val('');
-}
-
-$(document).ready(function() {
-  firebase = new Firebase('https://intense-inferno-6472.firebaseio.com/log'),
-  auth = firebase.getAuth(),
-  user = null,
-  posts = null;
-
-  if (auth)
-    process_auth();
-});
-
-</script>
 </head>
+
 <body>
+
+
 <div id="not-logged-in">
-  <button onclick="log_in()">Log in!</button>
+  <button onclick="authenticate()">Log in</button>
 </div>
+
 
 <div id="logged-in" style="display:none">
-  <p>
-    Hi, you're logged in as <span id="login-name"></span>.
-  </p>
 
-  <div id="new-post">
-    <textarea id="new-post-text" class="fixed-width-text" rows="10" cols="80"></textarea>
+  <!-- header message -->
+  <p>You're logged in as <span id="login-name"></span>.</p>
+
+  <!-- new post stuff -->
+  <div>
+    <div><textarea id="new-post-body" rows="12" cols="80"></textarea></div>
+    <div><input id="new-post-tags" type="text"></div>
+    <div><button onclick="post_new_post()">New Post</button></div>
+  </div>
+
+  <!-- post search -->
+  <div>
+    <p>Search</p>
     <div>
-      <button onclick="new_post_button_clicked()">New Post</button>
+      <input id="posts-search-start-date" onchange="refresh_search_results()" type="date">
+      <input id="posts-search-end-date" onchange="refresh_search_results()" type="date">
+      <input id="posts-search-regex" onchange="refresh_search_results()" type="text">
     </div>
+    <div id="posts-search-results"></div>
   </div>
-
-  <div id="posts">
-  </div>
-</div>
 
 </body>
+
 </html>
