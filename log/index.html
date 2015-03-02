@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+
+var firebase, auth, user, posts;
+
+function log_in() {
+  firebase.authWithOAuthPopup('google', function(error, authData) {
+    if (error) {
+      console.log('Login Failed!', error);
+    } else {
+      console.log('Authenticated successfully with payload:', authData);
+      auth = authData;
+      process_auth();
+    }
+  });
+}
+
+function process_auth() {
+  $('#logged-in').html("Hi, you're logged in as " + auth.google.displayName + ".");
+  user = firebase.child('users').child(auth.uid);
+  user.transaction(function (value) {
+    return value || {'posts': {}};
+  });
+  posts = user.child('posts');
+  $('#not-logged-in').css('display', 'none');
+  $('#logged-in').css('display', 'block');
+}
+
+$(document).ready(function() {
+
+firebase = new Firebase('https://intense-inferno-6472.firebaseio.com/log'),
+auth = firebase.getAuth(),
+user = null,
+posts = null;
+
+if (auth) {
+  process_auth();
+}
+
+});
+
+</script>
+</head>
+<body>
+
+<div id="not-logged-in">
+  <button onclick="log_in()">Log in!</button>
+</div>
+
+<div id="logged-in" style="display:none">
+</div>
+
+</body>
+</html>
