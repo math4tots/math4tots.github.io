@@ -15,7 +15,7 @@
 Database Schema
 
   post (/log/users/[auth.uid]/posts/[post_id]) = {
-    timestamp: number (timestamp in milliseconds from Date.getTime),
+    timestamp: number (Firebase.ServerValue.TIMESTAMP),
     body: string (body of the post)
   }
 
@@ -67,7 +67,7 @@ function show_post(post) {
 
 function new_post_button_clicked() {
   posts.push({
-    'timestamp': new Date().getTime(),
+    'timestamp': Firebase.ServerValue.TIMESTAMP,
     'body': $('#new-post-text').val()
   });
   $('#new-post-text').val('');
