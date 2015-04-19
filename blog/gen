@@ -15,7 +15,7 @@ for d in posts/*; do
 		cd "$d"
 		source about.txt
 		echo "$d $title"
-		echo "<a href=\"$d\">$title</a>" >> ../../index.html
+		echo "<a href=\"$d/post.html\">$title</a>" >> ../../index.html
 		echo "<!DOCTYPE html>" > post.html
 		echo "<html>" >> post.html
 		echo "<head>" >> post.html
