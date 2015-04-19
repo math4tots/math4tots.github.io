@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Generates the html from the markdown scripts.
+
+for d in posts/*; do
+	(
+		cd "$d" && \
+		source about.txt && \
+		echo "<!DOCTYPE html>" > post.html && \
+		echo "<html>" >> post.html && \
+		echo "<head>" >> post.html && \
+		echo "<title>$title</title>" >> post.html && \
+		echo "</head>" >> post.html && \
+		echo "<body>" >> post.html && \
+		echo "<h1>$title</h1>" >> post.html && \
+		echo "<p>Created $(git log post.md | grep "^Date:" | sed "s/^Date://" | tail -n 1)</p>" >> post.html && \
+		echo "<p>Last modified $(git log post.md | grep "^Date:" | sed "s/^Date://" | head -n 1)</p>" >> post.html && \
+		cat post.md | pandoc -f markdown -t html >> post.html && \
+		echo "</body>" >> post.html && \
+		echo "</html>" >> post.html
+	)
+done

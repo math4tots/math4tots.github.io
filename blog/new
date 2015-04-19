@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Creates a new blog post. Must be run in the root of the blog directory.
+
+# args
+#  $1 (optional) title of the blog to be specified in about.txt
+#  $2 (optional) blog contents to go into post.md
+
+directory_name="posts/$(uuidgen)" && \
+echo "directory_name=$directory_name" && \
+mkdir "$directory_name" && \
+echo "title=\"$1\"" > "$directory_name/about.txt" && \
+echo "$2" > "$directory_name/post.md"
