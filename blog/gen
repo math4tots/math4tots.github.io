@@ -2,21 +2,34 @@
 
 # Generates the html from the markdown scripts.
 
+echo "<!DOCTYPE html>" > index.html
+echo "<html>" >> index.html
+echo "<head>" >> index.html
+echo "<title>$title</title>" >> index.html
+echo "</head>" >> index.html
+echo "<body>" >> index.html
+echo "<h1>My Blog!</h1>" >> index.html
+
 for d in posts/*; do
 	(
-		cd "$d" && \
-		source about.txt && \
-		echo "<!DOCTYPE html>" > post.html && \
-		echo "<html>" >> post.html && \
-		echo "<head>" >> post.html && \
-		echo "<title>$title</title>" >> post.html && \
-		echo "</head>" >> post.html && \
-		echo "<body>" >> post.html && \
-		echo "<h1>$title</h1>" >> post.html && \
-		echo "<p>Created $(git log post.md | grep "^Date:" | sed "s/^Date://" | tail -n 1)</p>" >> post.html && \
-		echo "<p>Last modified $(git log post.md | grep "^Date:" | sed "s/^Date://" | head -n 1)</p>" >> post.html && \
-		cat post.md | pandoc -f markdown -t html >> post.html && \
-		echo "</body>" >> post.html && \
+		cd "$d"
+		source about.txt
+		echo "$d $title"
+		echo "<a href=\"$d\">$title</a>" >> ../../index.html
+		echo "<!DOCTYPE html>" > post.html
+		echo "<html>" >> post.html
+		echo "<head>" >> post.html
+		echo "<title>$title</title>" >> post.html
+		echo "</head>" >> post.html
+		echo "<body>" >> post.html
+		echo "<h1>$title</h1>" >> post.html
+		echo "<p>Created $(git log post.md | grep "^Date:" | sed "s/^Date://" | tail -n 1)</p>" >> post.html
+		echo "<p>Last modified $(git log post.md | grep "^Date:" | sed "s/^Date://" | head -n 1)</p>" >> post.html
+		cat post.md | pandoc -f markdown -t html >> post.html
+		echo "</body>" >> post.html
 		echo "</html>" >> post.html
 	)
 done
+
+echo "</body>" >> index.html
+echo "</html>" >> index.html
