@@ -1,12 +1,10 @@
-blogs!!
-=======
+Blog.
+=====
 
-I could use github's Jekyll, or...
+Well, the old stuff seemed to be a mess.
 
-I feel like I can go pretty far with just a few rickety bash scripts.
+Want to try something different.
 
-deps
-* uuidgen (belongs to a larger package... google it)
-* pandoc (for generating html from markdown stuff)
-* git (for version control and timestamping)
-* bash (for running the scripts)
+Just drop *.sh files in the ./src directory, and the ./gen script will generate everything in the ./bin directory.
+
+The ./bak directory is populated with timestamped versions of scripts in ./src.

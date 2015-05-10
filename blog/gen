@@ -1,35 +1,80 @@
 #!/bin/bash
 
-# Generates the html from the markdown scripts.
 
-echo "<!DOCTYPE html>" > index.html
-echo "<html>" >> index.html
-echo "<head>" >> index.html
-echo "<title>$title</title>" >> index.html
-echo "</head>" >> index.html
-echo "<body>" >> index.html
-echo "<h1>My Blog!</h1>" >> index.html
+### This script probes 'src' and populates 'bak' and 'bin'.
 
-for d in posts/*; do
-	(
-		cd "$d"
-		source about.txt
-		echo "$d $title"
-		echo "<a href=\"$d/post.html\">$title</a>" >> ../../index.html
-		echo "<!DOCTYPE html>" > post.html
-		echo "<html>" >> post.html
-		echo "<head>" >> post.html
-		echo "<title>$title</title>" >> post.html
-		echo "</head>" >> post.html
-		echo "<body>" >> post.html
-		echo "<h1>$title</h1>" >> post.html
-		echo "<p>Created $(git log post.md | grep "^Date:" | sed "s/^Date://" | tail -n 1)</p>" >> post.html
-		echo "<p>Last modified $(git log post.md | grep "^Date:" | sed "s/^Date://" | head -n 1)</p>" >> post.html
-		cat post.md | pandoc -f markdown -t html >> post.html
-		echo "</body>" >> post.html
-		echo "</html>" >> post.html
-	)
-done
 
-echo "</body>" >> index.html
-echo "</html>" >> index.html
+# get the name of the directory this script lives in.
+# We want to process things relative to where this script lives,
+# not relative to where it is being executed.
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+SRC_DIR="$DIR/src"
+BIN_DIR="$DIR/bin"
+BAK_DIR="$DIR/bak"
+
+mkdir -p "$BIN_DIR"
+
+(cd "$DIR"
+cat >index.html <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>A spicy blog</title>
+</head>
+<body>
+<h1>My Blog!</h1>
+EOF
+)
+
+for s in `ls $SRC_DIR`; do (cd "$SRC_DIR"
+
+  source "$s"
+
+  # add an entry in index.html
+  (cd "$DIR"
+    echo "<a href=\"blog/bin/$s.html\">$TITLE</a>" >> index.html
+  )
+
+  # do nothing else if nothing has changed.
+  if [ -d "$BAK_DIR/$s" ] && [ "$(ls "$BAK_DIR/$s")" ]; then
+    LATEST=$(ls "$BAK_DIR/$s" | sort -n | tail -n 1)
+    echo "$LATEST"
+    if diff "$BAK_DIR/$s/$LATEST" "$s" 2>&1 1>/dev/null; then
+      continue
+    fi
+  fi
+
+  # create a backup
+  mkdir -p "$BAK_DIR/$s"
+  cp "$s" "$BAK_DIR/$s/$(date +%s)"
+
+  # finally write the html
+  DST_FILE="$BIN_DIR/$s.html"
+  BODY=`echo "$BODY" | pandoc -f markdown -t html`
+  cat >"$BIN_DIR/$s.html" <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>$TITLE</title>
+</head>
+<body>
+<div>
+$BODY
+</div>
+<div>
+Created $(date -r"$(ls "$BAK_DIR/$s" | sort -n | head -n 1)")
+Last Modified $(date -r"$(ls "$BAK_DIR/$s" | sort -n | tail -n 1)")
+</div>
+</body>
+</html>
+EOF
+); done
+
+
+(cd "$DIR"
+cat >>index.html <<EOF
+</body>
+</html>
+EOF
+)

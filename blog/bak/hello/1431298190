@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TITLE="hello world!"
+TAGS=
+
+read -r -d '' BODY <<'EOF'
+
+First post!
+
+EOF
