@@ -39,7 +39,6 @@ for s in `ls $SRC_DIR`; do (cd "$SRC_DIR"
   # do nothing else if nothing has changed.
   if [ -d "$BAK_DIR/$s" ] && [ "$(ls "$BAK_DIR/$s")" ]; then
     LATEST=$(ls "$BAK_DIR/$s" | sort -n | tail -n 1)
-    echo "$LATEST"
     if diff "$BAK_DIR/$s/$LATEST" "$s" 2>&1 1>/dev/null; then
       continue
     fi
