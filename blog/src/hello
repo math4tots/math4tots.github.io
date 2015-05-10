@@ -8,3 +8,4 @@ read -r -d '' BODY <<'EOF'
 First post!
 
 EOF
+
