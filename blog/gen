@@ -63,8 +63,8 @@ for s in `ls $SRC_DIR`; do (cd "$SRC_DIR"
 $BODY
 </div>
 <div>
-Created $(date -r"$(ls "$BAK_DIR/$s" | sort -n | head -n 1)")
-Last Modified $(date -r"$(ls "$BAK_DIR/$s" | sort -n | tail -n 1)")
+<p>Created $(date -r"$(ls "$BAK_DIR/$s" | sort -n | head -n 1)")</p>
+<p>Last Modified $(date -r"$(ls "$BAK_DIR/$s" | sort -n | tail -n 1)")</p>
 </div>
 </body>
 </html>
