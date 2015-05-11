@@ -33,7 +33,7 @@ for s in `ls $SRC_DIR`; do (cd "$SRC_DIR"
 
   # add an entry in index.html
   (cd "$DIR"
-    echo "<a href=\"blog/bin/$s.html\">$TITLE</a>" >> index.html
+    echo "<a href=\"bin/$s.html\">$TITLE</a>" >> index.html
   )
 
   # do nothing else if nothing has changed.
