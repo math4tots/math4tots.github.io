@@ -1,0 +1,15 @@
+#!/bin/bash
+
+TITLE="Presidential election 1984"
+TAGS=
+
+read -r -d '' BODY <<'EOF'
+
+Just watched an episode of the Goldbergs.
+
+![Picture of Ronald Reagan](http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Portrait_of_President_Reagan_1981.jpg/330px-Official_Portrait_of_President_Reagan_1981.jpg)
+![Picture of Walter Mondale](http://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/U.S_Vice-President_Walter_Mondale.jpg/324px-U.S_Vice-President_Walter_Mondale.jpg)
+
+Walter Mondale looks just a bit too scary in this pic.
+
+EOF
