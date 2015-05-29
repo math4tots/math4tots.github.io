@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TITLE="vimux"
+TAGS=
+
+read -r -d '' BODY <<'EOF'
+
+vim + tmux ftw
+
+EOF
