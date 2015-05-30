@@ -156,8 +156,8 @@ function copyLine(y, line) {
 function clearLines() {
   for (var y = 0; y < MAX_Y; y++) {
     if (lineFull(y)) {
-      for (var yy = y; y < MAX_Y; y++)
-        copyLine(y, getLine(y-1));
+      for (var yy = y; yy < MAX_Y; yy++)
+        copyLine(yy, getLine(yy-1));
     }
   }
 }
