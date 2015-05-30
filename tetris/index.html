@@ -110,6 +110,8 @@ function tick() {
 
   console.log(live_x);
 
+  clearLines();
+
   live_y += 1;
   if (collisionHappened()) {
     live_y -= 1;
@@ -121,8 +123,6 @@ function tick() {
     }
   }
   drawPiece(live_x, live_y, live_piece, LIVE_PIECE_COLOR);
-
-  clearLines();
 
   draw();
   window.setTimeout(tick, TICK_MS);
