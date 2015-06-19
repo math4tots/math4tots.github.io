@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TITLE="LA Noire is a fun game"
+TAGS=
+
+read -r -d '' BODY <<'EOF'
+
+I didn't finish it. But I just saw vids on Youtube.
+
+EOF
