@@ -1,0 +1,12 @@
+#!/bin/bash
+
+TITLE="Favorite Video"
+TAGS=
+
+read -r -d '' BODY <<'EOF'
+
+Career advice from uncle TED.
+
+<iframe  title="YouTube video player" width="480" height="390" src="http://www.youtube.com/watch?v=iKHTawgyKWQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+EOF
