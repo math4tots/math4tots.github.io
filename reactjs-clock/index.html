@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+[sudo] npm install -g babel-cli
+npm install babel-preset-react
+
+babel --presets react src --watch --out-dir build
+-->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <!-- No need for Babel! -->
+  </head>
+  <body>
+    <div id="react-div"></div>
+    <script src="build/main.js"></script>
+  </body>
+</html>
