@@ -38,8 +38,12 @@ var Clock = React.createClass({
     return {
       hour: '00',
       min: '00',
+      sec: '00',
       suf: 'am'
     };
+  },
+  getDefaultProps: function () {
+    return { updateInterval: 500 };
   },
   componentDidMount: function () {
     this.updateTime();
@@ -49,8 +53,10 @@ var Clock = React.createClass({
     var d = new Date();
     this.setState({
       hour: ('0' + d.getHours()).slice(-2),
-      min: ('0' + d.getMinutes()).slice(-2)
+      min: ('0' + d.getMinutes()).slice(-2),
+      sec: ('0' + d.getSeconds()).slice(-2)
     });
+    setTimeout(this.updateTime, this.props.updateInterval);
   },
   render: function () {
     return React.createElement(
@@ -62,7 +68,13 @@ var Clock = React.createClass({
         null,
         ':'
       ),
-      this.state.min
+      this.state.min,
+      React.createElement(
+        Blink,
+        null,
+        ':'
+      ),
+      this.state.sec
     );
   }
 });

@@ -32,8 +32,12 @@ var Clock = React.createClass({
     return {
       hour: '00',
       min: '00',
+      sec: '00',
       suf: 'am'
     }
+  },
+  getDefaultProps: function() {
+    return {updateInterval: 500}
   },
   componentDidMount: function() {
     this.updateTime()
@@ -44,11 +48,15 @@ var Clock = React.createClass({
     this.setState({
       hour: ('0' + d.getHours()).slice(-2),
       min: ('0' + d.getMinutes()).slice(-2),
+      sec: ('0' + d.getSeconds()).slice(-2),
     })
+    setTimeout(this.updateTime, this.props.updateInterval)
   },
   render: function() {
     return (<h1>
-      {this.state.hour}<Blink>:</Blink>{this.state.min}
+      {this.state.hour}<Blink>:</Blink>
+      {this.state.min}<Blink>:</Blink>
+      {this.state.sec}
     </h1>)
   }
 })
