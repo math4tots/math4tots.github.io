@@ -45,8 +45,6 @@ var live_piece = PIECES[0], live_x = MAX_X/2, live_y = 0;
 
 makeNewPiece();
 
-console.log(live_x, MAX_X);
-
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
@@ -113,8 +111,6 @@ function collisionHappened() {
 
 function tick() {
   drawPiece(live_x, live_y, live_piece, EMPTY_COLOR);
-
-  console.log(live_x);
 
   clearLines();
 
@@ -193,7 +189,7 @@ tick();
 
 $('body').keypress(function(event) {
   drawPiece(live_x, live_y, live_piece, EMPTY_COLOR);
-
+  console.log(event.charCode);
   if (event.charCode === 97) { // 'a'
     horizontalMove(-1);
   }
