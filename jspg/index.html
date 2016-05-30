@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple javascript playground</title>
+<style>
+textarea {
+   font-family: "Lucida Console", Monaco, monospace;
+   font-size: 14px;
+}
+</style>
+<script>
+function on_click_run() {
+  eval(document.getElementById("code").value);
+}
+</script>
+</head>
+
+<body>
+<button type="button" onclick="on_click_run()">run</button><br />
+
+<textarea id="code" rows="40" cols="80">
+</textarea>
+
+</body>
