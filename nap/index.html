@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple javascript playground</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/codemirror.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/fold/foldgutter.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/dialog/dialog.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/theme/monokai.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/search/searchcursor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/search/search.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/dialog/dialog.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/edit/matchbrackets.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/edit/closebrackets.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/comment/comment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/wrap/hardwrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/fold/foldcode.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/addon/fold/brace-fold.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/mode/javascript/javascript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.15.2/keymap/sublime.js"></script>
+<script src="nap.js"></script>
+<script>
+var editor = null;
+function on_click_run() {
+  napEval(editor.getValue());
+}
+window.onload = function() {
+  editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+    lineNumbers: true,
+    mode: "text",
+    keyMap: "sublime",
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    showCursorWhenSelecting: true,
+    theme: "monokai",
+    tabSize: 2
+  });
+};
+</script>
+</head>
+
+<body>
+<button type="button" onclick="on_click_run()">run</button><br />
+
+<textarea id="code" rows="40" cols="80">
+</textarea>
+
+<p>
+The editor is CodeMirror configured to Sublime mode.
+Most notably for me, this means that 'Ctrl+D' works the way I like it :)
+</p>
+</body>
