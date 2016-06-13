@@ -22,7 +22,7 @@ function assert(cond, message) {
 {
   let tokens = nap.lex(`
 while True:
-  "hello\n world" 5 4.4 x.y # hoi
+  'hello\n world' 5 4.4 x.y # hoi
 # fun`);
   assert(tokens.length === 14, 'tokens.length === ' + tokens.length);
   let types = tokens.map((token) => token.type);
