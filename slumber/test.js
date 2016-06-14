@@ -65,7 +65,7 @@ while True:
 print(nil)
 print(print)
 `);
-  ast.run(slumber.globalScope);
+  ast.run(Object.create(slumber.globalScope));
 }
 
 console.log('slumber tests pass!');

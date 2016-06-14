@@ -623,7 +623,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
   let globalScope = {
     slmnil: slmnil,
-    slmObject: new SlmClass(SlmObject),
+    slmObject: new SlmClass('Object', SlmObject),
     slmprint: new SlmFunction('print', function(args) {
       console.log(args[0].slm__str());
     }),
