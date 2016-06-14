@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 /*
-NAP: Not actually Python.
+NAP: Not Actually Python.
 
 Nap is a programming language that is largely meant to resemble Python.
 
@@ -38,6 +38,8 @@ if (typeof module !== 'undefined' && module.exports) {
   'use strict';
 
   //// lex
+  // Not all features supported by CPython are supported here (e.g.
+  // CPython lets you use tabs for indentation, but this lexer forbids it).
   class Source {
     constructor(text, uri) {
       this.text = text;
@@ -46,15 +48,43 @@ if (typeof module !== 'undefined' && module.exports) {
   }
   exports.Source = Source;
 
+  function stringToSource(string) {
+    return new Source(string, '<unknown>');
+  }
+
   class Token {
-    constructor(type, value, i, source) {
+    constructor(type, value, cursor, source) {
       this.type = type;
       this.value = value;
-      this.i = i;
+      this.cursor = cursor;
       this.source = source;
+    }
+    toLocationMessage() {
+      return 'File "' + this.source.uri + '", line ' +
+          this.getLineNumber();
+    }
+    getLineNumber() {
+      let lineno = 1;
+      let text = this.source.text;
+      for (let i = 0; i < this.cursor; i++) {
+        if (text[i] === '\n') {
+          lineno++;
+        }
+      }
+      return lineno;
+    }
+    inspect() {
+      return 'Token(' + this.type + ', ' +
+          this.value + ', ' + this.cursor + ')';
     }
   }
   exports.Token = Token;
+
+  class SyntaxError extends Error {
+    constructor(token, message) {
+      super(token.toLocationMessage() + ': ' + message);
+    }
+  }
 
   const KEYWORDS = [
       'False', 'class', 'finally', 'is', 'return',
@@ -122,13 +152,15 @@ if (typeof module !== 'undefined' && module.exports) {
     case "'":
       return "'";
     default:
-      throw 'invalid escape: ' + ch(i);
+      throw new SyntaxError(
+          new Token('ERR', null, i, source),
+          'invalid escape: ' + ch(i));
     }
   }
   function lex(source) {
     // allow 'lex' to accept either a 'string' or a 'Source' object.
     if (typeof source === 'string') {
-      source = new Source(source, '<unknown>');
+      source = stringToSource(source);
     }
 
     // state and helper functions
@@ -207,7 +239,9 @@ if (typeof module !== 'undefined' && module.exports) {
         j++;
       }
       if (ch(j) === '\t') {
-        throw 'Tabs are not allowed in indentations';
+        throw new SyntaxError(
+            new Token('ERR', null, i, source),
+            'Tabs are not allowed in indentations');
       }
       let depth = j - i;
       let last = indentStack[indentStack.length - 1];
@@ -256,7 +290,9 @@ if (typeof module !== 'undefined' && module.exports) {
           }
           while (!startsWith(i, quote)) {
             if (i >= s.length) {
-              throw 'unterminated string literal';
+              throw new SyntaxError(
+                new Token('ERR', null, j, source),
+                'unterminated string literal');
             }
             if (!raw && ch(i) === '\\') {
               i++;
@@ -288,7 +324,7 @@ if (typeof module !== 'undefined' && module.exports) {
           }
           continue;
         }
-        // IDENTIFIER/KEYWORDS
+        // NAME/KEYWORDS
         if (isWord(ch(i))) {
           let j = i;
           while (isWord(ch(i))) {
@@ -298,7 +334,7 @@ if (typeof module !== 'undefined' && module.exports) {
           if (KEYWORDS.indexOf(word) !== -1) {
             tokens.push(new Token(word, null, j, source));
           } else {
-            tokens.push(new Token('IDENTIFIER', word, j, source));
+            tokens.push(new Token('NAME', word, j, source));
           }
           continue;
         }
@@ -315,7 +351,9 @@ if (typeof module !== 'undefined' && module.exports) {
           continue;
         }
         // err
-        throw 'unrecognized token: ' + s.substring(i, i+10);
+        throw new SyntaxError(
+          new Token('ERR', null, i, source),
+          'unrecognized token: ' + s.substring(i, i+10));
       }
     }
     tokens.push(new Token('EOF', null, i, source));
@@ -323,13 +361,237 @@ if (typeof module !== 'undefined' && module.exports) {
   }
   exports.lex = lex;
 
-  //// parse
+  //// Ast and Data model
+  class napobject {
+  }
+  exports.napobject = napobject;
+
+  class napNoneType extends napobject {}
+  let napNone = new napNoneType();
+  exports.napNone = napNone;
+
+  class napstr extends napobject {}
+  exports.napstr = napstr;
+
+  class naptuple extends napobject {
+  }
+  exports.naptuple = naptuple;
+
+  class Ast {
+    constructor(token) {
+      this.token = token;
+    }
+  }
+  class FileInput extends Ast {
+    constructor(token, stmts) {
+      super(token);
+      this.stmts = stmts;
+    }
+  }
+  class Statement extends Ast {}
+  class Suite extends Statement {
+    constructor(token, stmts) {
+      super(token);
+      this.stmts = stmts;
+    }
+  }
+  class SimplifiedExpressionStatement extends Statement {
+    constructor(token, expr) {
+      super(token);
+      this.expr = expr;
+    }
+    run(scope) {
+      this.expr.eval(scope);
+    }
+  }
+  class SimplifiedAssignmentStatement extends Statement {
+    constructor(token, name, expr) {
+      super(token);
+      this.name = name;
+      this.key = 'nap' + name;
+      this.expr = expr;
+    }
+    run(scope) {
+      scope[this.key] = this.expr.eval(scoep);
+    }
+  }
+  // class TestlistStarExpression extends Ast {
+  //   constructor(token, items) {
+  //     super(token);
+  //     this.items = items;
+  //   }
+  // }
+  // class ExpressionStatement extends Statement {
+  //   constructor(token, lhss, rhs) {
+  //     super(token);
+  //     this.lhss = lhss;
+  //     this.rhs = rhs;
+  //   }
+  //   run(scope) {
+  //     let value = this.rhs.eval(scope);
+  //     for (let lhs of this.lhss) {
+  //       lhs.assign(scope, value);
+  //     }
+  //   }
+  // }
+  class Expression extends Ast {}
+  class Literal extends Expression {
+    constructor(token, value) {
+      this.token = token;
+      this.value = value;
+    }
+    eval(scope) {
+      return this.value;
+    }
+  }
+
+  //// Parser
+  // A simple recursive descent parser.
+  // There is *ahem* a decent bit of backtracking.
+  // Not sure how serious this is to performance.
+  const AUGASSIGNS = [
+    '+=', '-=', '*=', '@=', '/=', '%=', '&=', '|=', '^=',
+    '<<=', '>>=', '**=', '//='
+  ];
   class Parser {
     constructor(source) {
       this.source = source;
       this.tokens = lex(source);
+      this.cursor = 0;
+    }
+    peek() {
+      return this.tokens[this.cursor];
+    }
+    gettok() {
+      let token = this.peek;
+      this.cursor++;
+      return token;
+    }
+    at(type) {
+      return type === this.peek().type;
+    }
+    consume(type) {
+      if (this.at(type)) {
+        return this.gettok();
+      }
+      return false;
+    }
+    expect(type) {
+      if (!this.at(type)) {
+        throw new SyntaxError(
+            this.peek(),
+            'expected ' + type + ' but found ' + this.peek().type);
+      }
+      return this.gettok();
+    }
+    require(parseMethodName) {
+      let result = this[parseMethodName]();
+      if (result === undefined) {
+        throw new SyntaxError(
+            this.peek(),
+            'expected to ' + parseMethodName + ' but found ' +
+            this.peek().type);
+      }
+      return result;
+    }
+    oneOf() {
+      for (let parseMethodName of Array.from(arguments)) {
+        let result = this[parseMethodName]();
+        if (result !== undefined) {
+          return result;
+        }
+      }
+    }
+    // rules
+    parseFileInput() {
+      let token = this.peek();
+      let stmts = [];
+      while (this.consume('NEWLINE'));
+      while (!this.at('EOF')) {
+        console.log(this.peek().type + ' ' + this.at('EOF'));
+        stmts.push(this.require('parseStmt'));
+        while (this.consume('NEWLINE'));
+      }
+      return new FileInput(token, stmts);
+    }
+    parseStmt() {
+      return this.oneOf('parseSimpleStmt', 'parseCompoundStmt');
+    }
+    parseSimpleStmt() {
+      let token = this.peek();
+      let stmt = this.parseSmallStmt();
+      if (stmt) {
+        let stmts = [stmt];
+        stmts.push(stmt);
+        while (this.consume(';')) {
+          stmts.push(this.require('parseSmallStmt'));
+        }
+        this.expect('NEWLINE');
+        return new Suite(token, stmts);
+      }
+    }
+    parseSmallStmt() {
+      return this.oneOf(
+          'parseExprStmt',
+          'parseDelStmt',
+          'parsePassStmt',
+          'parseFlowStmt',
+          'parseImportStmt',
+          'parseGlobalStmt',
+          'parseNonlocalStmt',
+          'parseAssertStmt');
+    }
+    parseExprStmt() {
+      let token = this.peek();
+      if (this.at('NAME') &&
+          this.cursor+1 < this.tokens.length &&
+          this.tokens[this.cursor+1].type === '=') {
+        let name = this.expect('NAME').value;
+        this.expect('=');
+        let expr = this.require('parseTest');
+        return new SimplifiedAssignmentStatement(token, name, expr);
+      }
+      let expr = this.parseTest();
+      if (expr) {
+        return new SimplifiedExpressionStatement(token, expr);
+      }
+
+      // TODO: Parse full expression statement grammar instead of just the
+      // simplified one above.
+      // let expr = this.parseTestlistStarExpr();
+      // if (expr) {
+      //   let aug = this.parseAugassign();
+      //   if (aug) {
+      //     throw new SyntaxError(this.peek(), 'NOT IMPLEMENTED YET');
+      //   } else if (this.at('=')) {
+      //     throw new SyntaxError(this.peek(), 'NOT IMPLEMENTED YET');
+      //   } else {
+      //     return new ExpressionStatement(lhs[0]);
+      //   }
+      // }
+    }
+    parseAugassign() {
+      let i = AUGASSIGNS.indexOf(this.peek().type);
+      if (i !== -1) {
+        return AUGASSIGNS[i];
+      }
+    }
+    parseCompoundStmt() {}
+    parseTest() {
+      // TODO: Go down the full expression hierarchy.
+      return this.parseAtom();
+    }
+    parseAtom() {
+      if (this.at('NAME')) {
+
+      }
     }
   }
   exports.Parser = Parser;
+
+  function parse(source) {
+    return new Parser(source).parseFileInput();
+  }
+  exports.parse = parse;
 
 })(nap);
