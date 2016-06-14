@@ -94,6 +94,8 @@ if (typeof module !== 'undefined' && module.exports) {
       'as', 'elif', 'if', 'or', 'yield',
       'assert', 'else', 'import', 'pass',
       'break', 'except', 'in', 'raise',
+      // my keywords
+      'async', 'await',
   ];
   const SYMBOLS = [
       // operators
@@ -506,7 +508,7 @@ if (typeof module !== 'undefined' && module.exports) {
           return [state, value];
         }
       }
-      return [null, null];
+      return [null, slmnil];
     }
   }
   class ExpressionStatement extends Statement {
@@ -516,7 +518,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }
     run(scope) {
       this.expr.eval(scope);
-      return [OK, null];
+      return [OK, slmnil];
     }
   }
   class Expression extends Ast {}
@@ -555,7 +557,14 @@ if (typeof module !== 'undefined' && module.exports) {
       if (this.vararg) {
         throw new Error('vararg not yet implemented');
       }
-      return this.f.eval(scope).slm__call(args);
+      try {
+        return this.f.eval(scope).slm__call(args);
+      } catch (e) {
+        if (e instanceof SlmError) {
+          e.trace.push(this.token);
+        }
+        throw e;
+      }
     }
   }
 
@@ -586,18 +595,39 @@ if (typeof module !== 'undefined' && module.exports) {
     slm__repr() {
       return 'nil';
     }
+    truthy() {
+      return false;
+    }
   }
   let slmnil = exports.slmnil = new SlmNil();
+  class SlmBool extends SlmObject {
+    constructor(value) {
+      super();
+      this.value = value;
+    }
+    slm__repr() {
+      return this.value ? 'true' : 'false';
+    }
+    truthy() {
+      return this.value;
+    }
+  }
   class SlmNumber extends SlmObject {
     constructor(value) {
       super();
       this.value = value;
+    }
+    truthy() {
+      return this.value !== 0;
     }
   }
   class SlmString extends SlmObject {
     constructor(value) {
       super();
       this.value = value;
+    }
+    truthy() {
+      return this.value.length !== 0;
     }
   }
   exports.SlmString = SlmString;
@@ -606,7 +636,11 @@ if (typeof module !== 'undefined' && module.exports) {
       super();
       this.value = value;
     }
+    truthy() {
+      return this.value.length !== 0;
+    }
   }
+  exports.SlmList = SlmList;
   class SlmFunction extends SlmObject {
     constructor(name, value) {
       super();
@@ -618,6 +652,30 @@ if (typeof module !== 'undefined' && module.exports) {
     }
     slm__repr() {
       return '<function ' + this.name + '>';
+    }
+    truthy() {
+      return true;
+    }
+  }
+  exports.SlmFunction = SlmFunction;
+  class SlmError extends SlmObject {
+    constructor(message) {
+      super();
+      this.message = message;
+      this.exception = exception ? exception : new Error(message);
+      this.trace = [];
+    }
+    truthy() {
+      return true;
+    }
+    toTraceMessage() {
+      return this.trace.map(token => token.toLocationMessage()).join('\n');
+    }
+  }
+  function checkargs(args, expected) {
+  }
+  function checkargsrange(args, min, max) {
+    if (args.length < min || args.length > max) {
     }
   }
 
