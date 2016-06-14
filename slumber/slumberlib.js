@@ -464,6 +464,10 @@ if (typeof module !== 'undefined' && module.exports) {
         let t = this.expect('NAME');
         return new Name(token, t.value);
       }
+      if (this.at('INT') || this.at('FLOAT')) {
+        let value = new SlmNumber(parseFloat(this.gettok().value));
+        return new Literal(token, value);
+      }
       throw new SyntaxError(
           token,
           'expected expression but found ' + token.type);
@@ -540,7 +544,7 @@ if (typeof module !== 'undefined' && module.exports) {
     eval(scope) {
       let result = scope[this.key];
       if (result === undefined) {
-        throw new Error('Undefined variable: ' + this.name);
+        slmThrow('undefined variable: ' + this.name, this.token);
       }
       return result;
     }
@@ -555,10 +559,11 @@ if (typeof module !== 'undefined' && module.exports) {
     eval(scope) {
       let args = this.args.map(arg => arg.eval(scope));
       if (this.vararg) {
-        throw new Error('vararg not yet implemented');
+        slmThrow('vararg not yet implemented', this.token);
       }
+      let f = this.f.eval(scope);
       try {
-        return this.f.eval(scope).slm__call(args);
+        return callm(f, 'slm__call', args, this.token);
       } catch (e) {
         if (e instanceof SlmError) {
           e.trace.push(this.token);
@@ -574,10 +579,12 @@ if (typeof module !== 'undefined' && module.exports) {
     constructor() {
       this.oid = objcnt++;
     }
-    slm__str() {
+    slm__str(args) {
+      checkargs(args, 0);
       return this.slm__repr();
     }
-    slm__repr() {
+    slm__repr(args) {
+      checkargs(args, 0);
       return '<object ' + this.oid + '>';
     }
   }
@@ -592,7 +599,8 @@ if (typeof module !== 'undefined' && module.exports) {
     }
   }
   class SlmNil extends SlmObject {
-    slm__repr() {
+    slm__repr(args) {
+      checkargs(args, 0);
       return 'nil';
     }
     truthy() {
@@ -605,7 +613,8 @@ if (typeof module !== 'undefined' && module.exports) {
       super();
       this.value = value;
     }
-    slm__repr() {
+    slm__repr(args) {
+      checkargs(args, 0);
       return this.value ? 'true' : 'false';
     }
     truthy() {
@@ -619,6 +628,9 @@ if (typeof module !== 'undefined' && module.exports) {
     }
     truthy() {
       return this.value !== 0;
+    }
+    slm__repr() {
+      return this.value.toString();
     }
   }
   class SlmString extends SlmObject {
@@ -659,7 +671,7 @@ if (typeof module !== 'undefined' && module.exports) {
   }
   exports.SlmFunction = SlmFunction;
   class SlmError extends SlmObject {
-    constructor(message) {
+    constructor(message, exception) {
       super();
       this.message = message;
       this.exception = exception ? exception : new Error(message);
@@ -671,11 +683,37 @@ if (typeof module !== 'undefined' && module.exports) {
     toTraceMessage() {
       return this.trace.map(token => token.toLocationMessage()).join('\n');
     }
+    toString() {
+      return this.message + '\n' + this.toTraceMessage();
+    }
+  }
+  function slmThrow(message, token) {
+    let e = new SlmError(message);
+    if (token) {
+      e.trace.push(token);
+    }
+    throw e;
+  }
+  function callm(owner, methodName, args, token) {
+    if (owner[methodName] === undefined) {
+      slmThrow('No such method ' + methodName, token);
+    }
+    return owner[methodName](args);
   }
   function checkargs(args, expected) {
+    if (args.length !== expected) {
+      slmThrow('expected ' + expected + ' args but got ' + args.length);
+    }
   }
   function checkargsrange(args, min, max) {
     if (args.length < min || args.length > max) {
+      slmThrow('expected ' + min + ' to ' + max + ' args but got ' +
+               args.length);
+    }
+  }
+  function checkargsmin(args, min) {
+    if (args.length < min) {
+      slmThrow('expected at least ' + min + ' args but got ' + args.length);
     }
   }
 
@@ -683,7 +721,8 @@ if (typeof module !== 'undefined' && module.exports) {
     slmnil: slmnil,
     slmObject: new SlmClass('Object', SlmObject),
     slmprint: new SlmFunction('print', function(args) {
-      console.log(args[0].slm__str());
+      checkargs(args, 1);
+      console.log(callm(args[0], 'slm__str', []));
     }),
   };
   exports.globalScope = globalScope;

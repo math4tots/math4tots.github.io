@@ -64,6 +64,8 @@ while True:
   let ast = slumber.parse(`
 print(nil)
 print(print)
+print(5)
+print(5.43)
 `);
   ast.run(Object.create(slumber.globalScope));
 }
