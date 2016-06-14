@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-const slumber = require('./slumber');
+const slumber = require('./slumberlib');
 const util = require('util');
 
 function assert(cond, message) {
