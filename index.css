@@ -1,5 +1,58 @@
-@import url("shared/common.css");
+/** Styles *ahem* borrowed from Bret Victor's no-script site.
+ */
+
+/** Some basic CSS concepts:
+
+  - Margin vs Padding
+    Margin is outer space of an element.
+      If margin left and right are set to auto, their used values are equal.
+    Padding is inner space.
+
+  - Block display
+    - display:block
+      Takes up the full width available, with a new line before and after.
+    - display:inline
+      Takes up only as much width as it needs, and does not force new lines.
+    - display:none
+      Not visible.
+
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#sections {
+  margin-left: 20px;
+  display: block;
+}
+
+body {
+  color: #111;
+}
 
 h1 {
-    margin-top:1.5em;
+  margin-top: 10px;
+  font: 26px "Helvetica-Neue", "Helvetica", "Arial", sans-serif;
+}
+
+h3 {
+  display: block;
+  margin-top: 3px;
+  margin-bottom: 16px;
+  font: 12px "Helvetica-Neue", "Helvetica", "Arial", sans-serif;
+  font-style: italic;
+  color: #999;
+}
+
+div {
+  padding-bottom: 20px;
+}
+
+li {
+  margin-left: 20px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  list-style: none;
 }
