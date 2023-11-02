@@ -23,5 +23,285 @@
     "thai": "เมื่อวาน",
     "phon": "mûuea-waan",
     "en": "yesterday"
+  },
+  {
+    "thai": "ปฏิทิน",
+    "phon": "bpà-dtì-thin",
+    "en": "calendar"
+  },
+  {
+    "thai": "วินาที",
+    "phon": "wí-naa-thii",
+    "en": "second"
+  },
+  {
+    "thai": "ชั่วโมง",
+    "phon": "chûua-moong",
+    "en": "hour"
+  },
+  {
+    "thai": "นาที",
+    "phon": "naa-thii",
+    "en": "minute"
+  },
+  {
+    "thai": "โมง",
+    "phon": "moong",
+    "en": "o'clock"
+  },
+  {
+    "thai": "นาฬิกา",
+    "phon": "naa-lí-gaa",
+    "en": "clock"
+  },
+  {
+    "thai": "สามารถ",
+    "phon": "sǎa-mâat",
+    "en": "can (do)"
+  },
+  {
+    "thai": "ใช้",
+    "phon": "chái",
+    "en": "use"
+  },
+  {
+    "thai": "ทำ",
+    "phon": "tham",
+    "en": "make/do"
+  },
+  {
+    "thai": "ไป",
+    "phon": "bpai",
+    "en": "go"
+  },
+  {
+    "thai": "มา",
+    "phon": "maa",
+    "en": "come"
+  },
+  {
+    "thai": "หัวเราะ",
+    "phon": "hǔua-ráw",
+    "en": "laugh"
+  },
+  {
+    "thai": "เห็น",
+    "phon": "hěn",
+    "en": "see"
+  },
+  {
+    "thai": "ไกล",
+    "phon": "glai",
+    "en": "far"
+  },
+  {
+    "thai": "เล็ก",
+    "phon": "lék",
+    "en": "small"
+  },
+  {
+    "thai": "ดี",
+    "phon": "dii",
+    "en": "good"
+  },
+  {
+    "thai": "สวย",
+    "phon": "sǔuai",
+    "en": "beautiful"
+  },
+  {
+    "thai": "น่าเกลียด",
+    "phon": "nâa-glìiat",
+    "en": "ugly"
+  },
+  {
+    "thai": "ยาก",
+    "phon": "yâak",
+    "en": "difficult"
+  },
+  {
+    "thai": "ง่าย",
+    "phon": "ngâai",
+    "en": "easy"
+  },
+  {
+    "thai": "ไม่ดี",
+    "phon": "mâi-dii",
+    "en": "bad"
+  },
+  {
+    "thai": "ใกล้",
+    "phon": "glâi",
+    "en": "near"
+  },
+  {
+    "thai": "ยินดีที่ได้รู้จัก",
+    "phon": "yin-dii thîi dâai rúu-jàk",
+    "en": "Nice to meet you"
+  },
+  {
+    "thai": "สวัสดี",
+    "phon": "sà-wàt-dii",
+    "en": "Hello"
+  },
+  {
+    "thai": "อรุณสวัสดิ์",
+    "phon": "à-run sà-wàt",
+    "en": "Good morning"
+  },
+  {
+    "thai": "สวัสดีตอนบ่าย",
+    "phon": "sà-wàt-dii dtaawn-bàai",
+    "en": "Good afternoon"
+  },
+  {
+    "thai": "สวัสดีตอนเย็น",
+    "phon": "sà-wàt-dii dtaawn-yen",
+    "en": "Good evening"
+  },
+  {
+    "thai": "ราตรีสวัสดิ์",
+    "phon": "raa-dtrii-sà-wàt",
+    "en": "Good night"
+  },
+  {
+    "thai": "คุณสบายดีไหม",
+    "phon": "khun sà-baai dii mǎi",
+    "en": "How are you?"
+  },
+  {
+    "thai": "ขอบคุณ",
+    "phon": "khàawp-khun",
+    "en": "Thank you"
+  },
+  {
+    "thai": "อร่อย",
+    "phon": "à-ràwy",
+    "en": "Delicious"
+  },
+  {
+    "thai": "วันจันทร์",
+    "phon": "wan jan",
+    "en": "Monday"
+  },
+  {
+    "thai": "วันอังคาร",
+    "phon": "wan ang-khaan",
+    "en": "Tuesday"
+  },
+  {
+    "thai": "วันพุธ",
+    "phon": "wan phút",
+    "en": "Wednesday"
+  },
+  {
+    "thai": "วันพฤหัสบดี",
+    "phon": "wan phá-rúe-hàt-sà-baaw-dii",
+    "en": "Thursday"
+  },
+  {
+    "thai": "วันศุกร์",
+    "phon": "wan sùk",
+    "en": "Friday"
+  },
+  {
+    "thai": "วันเสาร์",
+    "phon": "wan sǎo",
+    "en": "Saturday"
+  },
+  {
+    "thai": "วันอาทิตย์",
+    "phon": "wan aa-thít",
+    "en": "Sunday"
+  },
+  {
+    "thai": "เดือนพฤษภาคม",
+    "phon": "duuean phrúet-sà-phaa-khom",
+    "en": "May"
+  },
+  {
+    "thai": "เดือนมกราคม",
+    "phon": "duuean má-gà-raa-khom",
+    "en": "January"
+  },
+  {
+    "thai": "เดือนกุมภาพันธ์",
+    "phon": "duuean gum-phaa-phan",
+    "en": "February"
+  },
+  {
+    "thai": "เดือนมีนาคม",
+    "phon": "duuean mii-naa-khom",
+    "en": "March"
+  },
+  {
+    "thai": "เดือนเมษายน",
+    "phon": "duuean mee-sǎ-yon",
+    "en": "April"
+  },
+  {
+    "thai": "เดือนมิถุนายน",
+    "phon": "duuean mí-thù-naa-yon",
+    "en": "June"
+  },
+  {
+    "thai": "เดือนกรกฎาคม",
+    "phon": "duuean gà-rá-gà-daa-khom",
+    "en": "July"
+  },
+  {
+    "thai": "เดือนสิงหาคม",
+    "phon": "duuean sǐng-hǎa-khom",
+    "en": "August"
+  },
+  {
+    "thai": "เดือนกันยายน",
+    "phon": "duuean gan-yaa-yon",
+    "en": "September"
+  },
+  {
+    "thai": "เดือนตุลาคม",
+    "phon": "duuean dtù-laa-khom",
+    "en": "October"
+  },
+  {
+    "thai": "เดือนพฤศจิกายน",
+    "phon": "duuean phrúet-sà-jì-gaa-yon",
+    "en": "November"
+  },
+  {
+    "thai": "เดือนธันวาคม",
+    "phon": "duuean than-waa-khom",
+    "en": "December"
+  },
+  {
+    "thai": "เท้า",
+    "phon": "tháao",
+    "en": "foot"
+  },
+  {
+    "thai": "ขา",
+    "phon": "khǎa",
+    "en": "leg"
+  },
+  {
+    "thai": "หัว",
+    "phon": "hǔua",
+    "en": "head"
+  },
+  {
+    "thai": "แขน",
+    "phon": "khǎaen",
+    "en": "arm"
+  },
+  {
+    "thai": "มือ",
+    "phon": "muue",
+    "en": "hand"
+  },
+  {
+    "thai": "นิ้วมือ",
+    "phon": "níu-muue",
+    "en": "finger"
   }
 ]
