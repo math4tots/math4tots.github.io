@@ -1,0 +1,23 @@
+{
+    "name": "Thai Study App",
+    "short_name": "Thai",
+    "description": "An App that will help you study Thai",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/app/index.html",
+    "display": "standalone",
+    "theme_color": "#05A0CC",
+    "background_color": "#05A0CC"
+}

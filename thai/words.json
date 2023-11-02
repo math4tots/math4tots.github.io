@@ -1,0 +1,27 @@
+[
+  {
+    "thai": "สัปดาห์",
+    "phon": "sàp-daa",
+    "en": "week"
+  },
+  {
+    "thai": "ปี",
+    "phon": "bpii",
+    "en": "year"
+  },
+  {
+    "thai": "วันนี้",
+    "phon": "wan-níi",
+    "en": "today"
+  },
+  {
+    "thai": "พรุ่งนี้",
+    "phon": "phrûng-níi",
+    "en": "tomorrow"
+  },
+  {
+    "thai": "เมื่อวาน",
+    "phon": "mûuea-waan",
+    "en": "yesterday"
+  }
+]

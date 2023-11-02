@@ -1,0 +1,18 @@
+{
+  "[css]": {
+    "editor.tabSize": 2,
+    "editor.suggest.insertMode": "replace"
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.maxTokenizationLineLength": 2500
+  },
+  "editor.formatOnSave": true
+}
