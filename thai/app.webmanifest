@@ -16,7 +16,7 @@
             "purpose": "any maskable"
         }
     ],
-    "start_url": "/app/index.html",
+    "start_url": "/thai/index.html",
     "display": "standalone",
     "theme_color": "#05A0CC",
     "background_color": "#05A0CC"
