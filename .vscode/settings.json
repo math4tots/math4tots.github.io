@@ -1,4 +1,9 @@
 {
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.suggest.insertMode": "replace",
+    "editor.formatOnType": true
+  },
   "[css]": {
     "editor.tabSize": 2,
     "editor.suggest.insertMode": "replace"
