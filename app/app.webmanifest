@@ -5,8 +5,15 @@
     "icons": [
         {
             "src": "favicon.png",
-            "sizes": "48x48",
-            "type": "image/png"
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
     "start_url": "/app/index.html",
