@@ -2,306 +2,603 @@
   {
     "thai": "สัปดาห์",
     "phon": "sàp-daa",
-    "en": "week"
+    "en": "week",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "ปี",
     "phon": "bpii",
-    "en": "year"
+    "en": "year",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "วันนี้",
     "phon": "wan-níi",
-    "en": "today"
+    "en": "today",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "พรุ่งนี้",
     "phon": "phrûng-níi",
-    "en": "tomorrow"
+    "en": "tomorrow",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "เมื่อวาน",
     "phon": "mûuea-waan",
-    "en": "yesterday"
+    "en": "yesterday",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "ปฏิทิน",
     "phon": "bpà-dtì-thin",
-    "en": "calendar"
+    "en": "calendar",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "วินาที",
     "phon": "wí-naa-thii",
-    "en": "second"
+    "en": "second",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "ชั่วโมง",
     "phon": "chûua-moong",
-    "en": "hour"
+    "en": "hour",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "นาที",
     "phon": "naa-thii",
-    "en": "minute"
+    "en": "minute",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "โมง",
     "phon": "moong",
-    "en": "o'clock"
+    "en": "o'clock",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "นาฬิกา",
     "phon": "naa-lí-gaa",
-    "en": "clock"
+    "en": "clock",
+    "tags": [
+      "DateAndTime"
+    ]
   },
   {
     "thai": "สามารถ",
     "phon": "sǎa-mâat",
-    "en": "can (do)"
+    "en": "can (do)",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "ใช้",
     "phon": "chái",
-    "en": "use"
+    "en": "use",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "ทำ",
     "phon": "tham",
-    "en": "make/do"
+    "en": "make/do",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "ไป",
     "phon": "bpai",
-    "en": "go"
+    "en": "go",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "มา",
     "phon": "maa",
-    "en": "come"
+    "en": "come",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "หัวเราะ",
     "phon": "hǔua-ráw",
-    "en": "laugh"
+    "en": "laugh",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "เห็น",
     "phon": "hěn",
-    "en": "see"
+    "en": "see",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
-    "thai": "ไกล",
-    "phon": "glai",
-    "en": "far"
+    "thai": "เดิน",
+    "phon": "Dein",
+    "en": "walk",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
-    "thai": "เล็ก",
-    "phon": "lék",
-    "en": "small"
-  },
-  {
-    "thai": "ดี",
-    "phon": "dii",
-    "en": "good"
-  },
-  {
-    "thai": "สวย",
-    "phon": "sǔuai",
-    "en": "beautiful"
-  },
-  {
-    "thai": "น่าเกลียด",
-    "phon": "nâa-glìiat",
-    "en": "ugly"
-  },
-  {
-    "thai": "ยาก",
-    "phon": "yâak",
-    "en": "difficult"
-  },
-  {
-    "thai": "ง่าย",
-    "phon": "ngâai",
-    "en": "easy"
-  },
-  {
-    "thai": "ไม่ดี",
-    "phon": "mâi-dii",
-    "en": "bad"
+    "thai": "ดื่ม",
+    "phon": "Dụ̄̀m",
+    "en": "drink",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
   },
   {
     "thai": "ใกล้",
     "phon": "glâi",
-    "en": "near"
+    "en": "near",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "ไกล",
+    "phon": "glai",
+    "en": "far",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "เล็ก",
+    "phon": "lék",
+    "en": "small",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "ดี",
+    "phon": "dii",
+    "en": "good",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "ไม่ดี",
+    "phon": "mâi-dii",
+    "en": "bad",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "สวย",
+    "phon": "sǔuai",
+    "en": "beautiful",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "น่าเกลียด",
+    "phon": "nâa-glìiat",
+    "en": "ugly",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "ยาก",
+    "phon": "yâak",
+    "en": "difficult",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "ง่าย",
+    "phon": "ngâai",
+    "en": "easy",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
   },
   {
     "thai": "ยินดีที่ได้รู้จัก",
     "phon": "yin-dii thîi dâai rúu-jàk",
-    "en": "Nice to meet you"
+    "en": "Nice to meet you",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "สวัสดี",
     "phon": "sà-wàt-dii",
-    "en": "Hello"
+    "en": "Hello",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "อรุณสวัสดิ์",
     "phon": "à-run sà-wàt",
-    "en": "Good morning"
+    "en": "Good morning",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "สวัสดีตอนบ่าย",
     "phon": "sà-wàt-dii dtaawn-bàai",
-    "en": "Good afternoon"
+    "en": "Good afternoon",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "สวัสดีตอนเย็น",
     "phon": "sà-wàt-dii dtaawn-yen",
-    "en": "Good evening"
+    "en": "Good evening",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "ราตรีสวัสดิ์",
     "phon": "raa-dtrii-sà-wàt",
-    "en": "Good night"
+    "en": "Good night",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "คุณสบายดีไหม",
     "phon": "khun sà-baai dii mǎi",
-    "en": "How are you?"
+    "en": "How are you?",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "ขอบคุณ",
     "phon": "khàawp-khun",
-    "en": "Thank you"
+    "en": "Thank you",
+    "tags": [
+      "Greetings"
+    ]
   },
   {
     "thai": "อร่อย",
     "phon": "à-ràwy",
-    "en": "Delicious"
+    "en": "Delicious",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ไก",
+    "phon": "Kị̀",
+    "en": "Chicken",
+    "tags": [
+      "Animals",
+      "Food"
+    ]
+  },
+  {
+    "thai": "หมู",
+    "phon": "H̄mū",
+    "en": "Pig",
+    "tags": [
+      "Animals",
+      "Food"
+    ]
+  },
+  {
+    "thai": "วัว",
+    "phon": "Wạw",
+    "en": "Cow",
+    "tags": [
+      "Animals",
+      "Food"
+    ]
+  },
+  {
+    "thai": "กุ้ง",
+    "phon": "Kûng",
+    "en": "Shrimp",
+    "tags": [
+      "Animals",
+      "Food"
+    ]
   },
   {
     "thai": "วันจันทร์",
     "phon": "wan jan",
-    "en": "Monday"
+    "en": "Monday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "วันอังคาร",
     "phon": "wan ang-khaan",
-    "en": "Tuesday"
+    "en": "Tuesday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "วันพุธ",
     "phon": "wan phút",
-    "en": "Wednesday"
+    "en": "Wednesday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "วันพฤหัสบดี",
     "phon": "wan phá-rúe-hàt-sà-baaw-dii",
-    "en": "Thursday"
+    "en": "Thursday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "วันศุกร์",
     "phon": "wan sùk",
-    "en": "Friday"
+    "en": "Friday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "วันเสาร์",
     "phon": "wan sǎo",
-    "en": "Saturday"
+    "en": "Saturday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "วันอาทิตย์",
     "phon": "wan aa-thít",
-    "en": "Sunday"
-  },
-  {
-    "thai": "เดือนพฤษภาคม",
-    "phon": "duuean phrúet-sà-phaa-khom",
-    "en": "May"
+    "en": "Sunday",
+    "tags": [
+      "DayOfWeek"
+    ]
   },
   {
     "thai": "เดือนมกราคม",
     "phon": "duuean má-gà-raa-khom",
-    "en": "January"
+    "en": "January",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนกุมภาพันธ์",
     "phon": "duuean gum-phaa-phan",
-    "en": "February"
+    "en": "February",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนมีนาคม",
     "phon": "duuean mii-naa-khom",
-    "en": "March"
+    "en": "March",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนเมษายน",
     "phon": "duuean mee-sǎ-yon",
-    "en": "April"
+    "en": "April",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
+  },
+  {
+    "thai": "เดือนพฤษภาคม",
+    "phon": "duuean phrúet-sà-phaa-khom",
+    "en": "May",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนมิถุนายน",
     "phon": "duuean mí-thù-naa-yon",
-    "en": "June"
+    "en": "June",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนกรกฎาคม",
     "phon": "duuean gà-rá-gà-daa-khom",
-    "en": "July"
+    "en": "July",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนสิงหาคม",
     "phon": "duuean sǐng-hǎa-khom",
-    "en": "August"
+    "en": "August",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนกันยายน",
     "phon": "duuean gan-yaa-yon",
-    "en": "September"
+    "en": "September",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนตุลาคม",
     "phon": "duuean dtù-laa-khom",
-    "en": "October"
+    "en": "October",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนพฤศจิกายน",
     "phon": "duuean phrúet-sà-jì-gaa-yon",
-    "en": "November"
+    "en": "November",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "เดือนธันวาคม",
     "phon": "duuean than-waa-khom",
-    "en": "December"
-  },
-  {
-    "thai": "เท้า",
-    "phon": "tháao",
-    "en": "foot"
-  },
-  {
-    "thai": "ขา",
-    "phon": "khǎa",
-    "en": "leg"
+    "en": "December",
+    "tags": [
+      "Month",
+      "Calendar"
+    ]
   },
   {
     "thai": "หัว",
     "phon": "hǔua",
-    "en": "head"
+    "en": "head",
+    "tags": [
+      "BodyPart"
+    ]
+  },
+  {
+    "thai": "หู",
+    "phon": "H̄ū",
+    "en": "ear",
+    "tags": [
+      "BodyPart"
+    ]
+  },
+  {
+    "thai": "ตา",
+    "phon": "Tā",
+    "en": "eye",
+    "tags": [
+      "BodyPart"
+    ]
+  },
+  {
+    "thai": "จมูก",
+    "phon": "Cmūk",
+    "en": "nose",
+    "tags": [
+      "BodyPart"
+    ]
   },
   {
     "thai": "แขน",
     "phon": "khǎaen",
-    "en": "arm"
+    "en": "arm",
+    "tags": [
+      "BodyPart"
+    ]
+  },
+  {
+    "thai": "ขา",
+    "phon": "khǎa",
+    "en": "leg",
+    "tags": [
+      "BodyPart"
+    ]
   },
   {
     "thai": "มือ",
     "phon": "muue",
-    "en": "hand"
+    "en": "hand",
+    "tags": [
+      "BodyPart"
+    ]
   },
   {
     "thai": "นิ้วมือ",
     "phon": "níu-muue",
-    "en": "finger"
+    "en": "finger",
+    "tags": [
+      "BodyPart"
+    ]
+  },
+  {
+    "thai": "เท้า",
+    "phon": "tháao",
+    "en": "foot",
+    "tags": [
+      "BodyPart"
+    ]
+  },
+  {
+    "thai": "นิ้วเท้า",
+    "phon": "níu-tháao",
+    "en": "toe",
+    "tags": [
+      "BodyPart"
+    ]
   }
 ]

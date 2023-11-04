@@ -8,15 +8,50 @@ if ('serviceWorker' in navigator) {
  *   thai: string,
  *   phon: string,
  *   en: string,
+ *   tags: string[],
  * }} WordEntry
+ */
+
+/***
+ * @typedef {{
+ *   tag: string,
+ *   wordIDs: number[],
+ * }} Category
  */
 
 const CORRECT_COLOR_CLASS = "mdl-color--light-green-A400";
 const INCORRECT_COLOR_CLASS = "mdl-color--red-A400";
 
+/**
+ * @param {WordEntry[]} words
+ * @returns {Category[]}
+ */
+function getCategoriesFromWords(words) {
+  /** @type {Category[]} */
+  const categories = [];
+
+  /** @type {{[tag: string]: Category}} */
+  const byTag = {};
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    for (const tag of word.tags) {
+      if (!byTag[tag]) {
+        categories.push(byTag[tag] = { tag: tag, wordIDs: [] });
+      }
+      byTag[tag].wordIDs.push(i);
+    }
+  }
+
+  return categories;
+}
+
 window.onload = async () => {
   /** @type {WordEntry[]} */
   const words = await (await fetch("words.json")).json();
+
+  const categories = getCategoriesFromWords(words);
+  console.log(`CATEGORIES = ${JSON.stringify(categories)}`);
 
   /** @type {HTMLElement} */
   const prompt = document.getElementById("prompt");
@@ -41,6 +76,7 @@ window.onload = async () => {
   let indices = [0, 0, 0, 0];
   let correctWordIndexIndex = 0;
   let userMadeChoice = false;
+  let categoryID = 0;
 
   /**
    * @returns {WordEntry}
@@ -57,7 +93,18 @@ window.onload = async () => {
 
   async function startNewPrompt() {
     userMadeChoice = false;
-    indices = chooseIndices(words.length, 4);
+
+    while (true) {
+      categoryID = Math.floor(Math.random() * categories.length);
+      const category = categories[categoryID];
+      if (category.wordIDs.length < 4) {
+        // If there are too few words in this category, try again
+        continue;
+      }
+      break;
+    }
+
+    indices = chooseElements(categories[categoryID].wordIDs, 4);
     correctWordIndexIndex = Math.floor(Math.random() * indices.length);
     const correctWordIndex = indices[correctWordIndexIndex];
     const word = words[correctWordIndex];
@@ -127,4 +174,16 @@ function chooseIndices(n, k) {
     }
   }
   return choices;
+}
+
+/**
+ * Selects `k` elements from an array
+ * @template {T}
+ * @param {T[]} array
+ * @param {number} k
+ * @returns {T[]}
+ */
+function chooseElements(array, k) {
+  const indices = chooseIndices(array.length, k);
+  return indices.map(i => array[i]);
 }
