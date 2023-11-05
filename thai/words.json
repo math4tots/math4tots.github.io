@@ -600,5 +600,738 @@
     "tags": [
       "BodyPart"
     ]
+  },
+  {
+    "thai": "เรื่อง",
+    "phon": "rêuang",
+    "en": "story",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "ความรัก",
+    "phon": "khwaa-mi rák",
+    "en": "love",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "ความสุข",
+    "phon": "khwaa-mi sùk",
+    "en": "happiness",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "เพื่อน",
+    "phon": "pêuan",
+    "en": "friend",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "ครอบครัว",
+    "phon": "khrôp-khrua",
+    "en": "family",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "เรียน",
+    "phon": "riian",
+    "en": "study",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "เข้า",
+    "phon": "khâo",
+    "en": "enter",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "ออก",
+    "phon": "awk",
+    "en": "exit",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "มี",
+    "phon": "mii",
+    "en": "have",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "ที่",
+    "phon": "thîi",
+    "en": "at",
+    "tags": [
+      "Prepositions"
+    ]
+  },
+  {
+    "thai": "ใน",
+    "phon": "nai",
+    "en": "in",
+    "tags": [
+      "Prepositions"
+    ]
+  },
+  {
+    "thai": "บน",
+    "phon": "bon",
+    "en": "on",
+    "tags": [
+      "Prepositions"
+    ]
+  },
+  {
+    "thai": "ใต้",
+    "phon": "dtâi",
+    "en": "under",
+    "tags": [
+      "Prepositions"
+    ]
+  },
+  {
+    "thai": "เหนือ",
+    "phon": "nʉ̂a",
+    "en": "above",
+    "tags": [
+      "Prepositions"
+    ]
+  },
+  {
+    "thai": "อากาศ",
+    "phon": "aa-gàat",
+    "en": "weather",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ป่า",
+    "phon": "bpàa",
+    "en": "forest",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ทะเล",
+    "phon": "tá-lee",
+    "en": "sea",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ดอกไม้",
+    "phon": "dɔ̀ɔk-máai",
+    "en": "flower",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "เด็ก",
+    "phon": "dèk",
+    "en": "child",
+    "tags": [
+      "People"
+    ]
+  },
+  {
+    "thai": "ผู้ใหญ่",
+    "phon": "phûu h̄ıl ỳ",
+    "en": "adult",
+    "tags": [
+      "People"
+    ]
+  },
+  {
+    "thai": "เรา",
+    "phon": "rao",
+    "en": "we / us",
+    "tags": [
+      "Pronouns"
+    ]
+  },
+  {
+    "thai": "คุณ",
+    "phon": "khun",
+    "en": "you (formal)",
+    "tags": [
+      "Pronouns"
+    ]
+  },
+  {
+    "thai": "เขา",
+    "phon": "khǎo",
+    "en": "he / she",
+    "tags": [
+      "Pronouns"
+    ]
+  },
+  {
+    "thai": "นักเรียน",
+    "phon": "nák-riian",
+    "en": "student",
+    "tags": [
+      "Occupations"
+    ]
+  },
+  {
+    "thai": "แพทย์",
+    "phon": "phæt-ý",
+    "en": "doctor",
+    "tags": [
+      "Occupations"
+    ]
+  },
+  {
+    "thai": "ช่าง",
+    "phon": "châang",
+    "en": "craftsman",
+    "tags": [
+      "Occupations"
+    ]
+  },
+  {
+    "thai": "นักบิน",
+    "phon": "nák-bin",
+    "en": "pilot",
+    "tags": [
+      "Occupations"
+    ]
+  },
+  {
+    "thai": "โรงเรียน",
+    "phon": "roong-riian",
+    "en": "school",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "โรงพยาบาล",
+    "phon": "roong-phá-yaa-baan",
+    "en": "hospital",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "ห้างสรรพสินค้า",
+    "phon": "hâang-sàp-sà-ná-sǐn-khâa",
+    "en": "shopping mall",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "สวนสาธารณะ",
+    "phon": "suan-saa-thaa-ra-naa",
+    "en": "public park",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "รถ",
+    "phon": "rót",
+    "en": "car",
+    "tags": [
+      "Transportation"
+    ]
+  },
+  {
+    "thai": "รถไฟ",
+    "phon": "rót fai",
+    "en": "train",
+    "tags": [
+      "Transportation"
+    ]
+  },
+  {
+    "thai": "เรือ",
+    "phon": "rʉ̌a",
+    "en": "boat",
+    "tags": [
+      "Transportation"
+    ]
+  },
+  {
+    "thai": "เครื่องบิน",
+    "phon": "khrʉ̂aŋ-bin",
+    "en": "airplane",
+    "tags": [
+      "Transportation"
+    ]
+  },
+  {
+    "thai": "น้ำ",
+    "phon": "náam",
+    "en": "water",
+    "tags": [
+      "BasicWords"
+    ]
+  },
+  {
+    "thai": "อาหาร",
+    "phon": "aa-hǎan",
+    "en": "food",
+    "tags": [
+      "BasicWords"
+    ]
+  },
+  {
+    "thai": "เสื้อผ้า",
+    "phon": "sêu-phâa",
+    "en": "clothing",
+    "tags": [
+      "BasicWords"
+    ]
+  },
+  {
+    "thai": "บ้าน",
+    "phon": "bâan",
+    "en": "house",
+    "tags": [
+      "BasicWords"
+    ]
+  },
+  {
+    "thai": "ครู",
+    "phon": "khruu",
+    "en": "teacher",
+    "tags": [
+      "Occupations"
+    ]
+  },
+  {
+    "thai": "เมนู",
+    "phon": "menoo",
+    "en": "menu",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "น้ำปาสโตรเลียม",
+    "phon": "naam-paa-saaw-tro-lee-am",
+    "en": "Pepsi",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ซาลาเปา",
+    "phon": "sa-laa-pep",
+    "en": "salad",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ปิ้งย่าง",
+    "phon": "ping-yaang",
+    "en": "barbecue",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "กาแฟ",
+    "phon": "kaa-fae",
+    "en": "coffee",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ชา",
+    "phon": "chaa",
+    "en": "tea",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "กิน",
+    "phon": "gin",
+    "en": "eat",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "นอน",
+    "phon": "non",
+    "en": "sleep",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "เรียนรู้",
+    "phon": "riian-ruu",
+    "en": "learn",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "สวยงาม",
+    "phon": "suay-ngam",
+    "en": "beautiful",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "อร่อยมาก",
+    "phon": "a-roy-maak",
+    "en": "delicious",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "ร้อน",
+    "phon": "raawn",
+    "en": "hot",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "หนาว",
+    "phon": "naao",
+    "en": "cold",
+    "tags": [
+      "Adjectives",
+      "Adjectives1"
+    ]
+  },
+  {
+    "thai": "สีดำ",
+    "phon": "si-dam",
+    "en": "black",
+    "tags": [
+      "Colors"
+    ]
+  },
+  {
+    "thai": "สีขาว",
+    "phon": "si-khao",
+    "en": "white",
+    "tags": [
+      "Colors"
+    ]
+  },
+  {
+    "thai": "สีแดง",
+    "phon": "si-daeng",
+    "en": "red",
+    "tags": [
+      "Colors"
+    ]
+  },
+  {
+    "thai": "สีเขียว",
+    "phon": "si-khieo",
+    "en": "green",
+    "tags": [
+      "Colors"
+    ]
+  },
+  {
+    "thai": "เลียนแบบ",
+    "phon": "lian-baep",
+    "en": "imitate",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "เที่ยว",
+    "phon": "thiaw",
+    "en": "travel",
+    "tags": [
+      "Verbs",
+      "Verbs1"
+    ]
+  },
+  {
+    "thai": "สัตว์",
+    "phon": "sat",
+    "en": "animal",
+    "tags": [
+      "Animals"
+    ]
+  },
+  {
+    "thai": "สิ่งของ",
+    "phon": "sing khɔng",
+    "en": "thing",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "การเดินทาง",
+    "phon": "kaan dern taang",
+    "en": "traveling",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "หนังสือ",
+    "phon": "nang seu",
+    "en": "book",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "คอมพิวเตอร์",
+    "phon": "khɔm-piu-dtə",
+    "en": "computer",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "ท่องเที่ยว",
+    "phon": "thɔ̂ng thîaw",
+    "en": "tourist",
+    "tags": [
+      "Nouns"
+    ]
+  },
+  {
+    "thai": "ร้านอาหาร",
+    "phon": "raan aa-hǎan",
+    "en": "restaurant",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "ตลาด",
+    "phon": "talàat",
+    "en": "market",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "โรงเรียนสอนขับรถ",
+    "phon": "roong-riian sɔ̌n kháp rót",
+    "en": "driving school",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "ห้องนอน",
+    "phon": "hɔ̂ng nɔn",
+    "en": "bedroom",
+    "tags": [
+      "Places"
+    ]
+  },
+  {
+    "thai": "บริษัท",
+    "phon": "bɔrísàt",
+    "en": "company",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "thai": "เงิน",
+    "phon": "ngoen",
+    "en": "money",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "thai": "สัญญา",
+    "phon": "sǎn-yaa",
+    "en": "contract",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "thai": "ธุรกิจ",
+    "phon": "thú-rá-gìt",
+    "en": "business",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "thai": "ราคา",
+    "phon": "raa-khaa",
+    "en": "price",
+    "tags": [
+      "Business"
+    ]
+  },
+  {
+    "thai": "นม",
+    "phon": "nom",
+    "en": "milk",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ผัก",
+    "phon": "phàk",
+    "en": "vegetables",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ข้าว",
+    "phon": "khaaw",
+    "en": "rice",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "ผลไม้",
+    "phon": "phl-mai",
+    "en": "fruit",
+    "tags": [
+      "Food"
+    ]
+  },
+  {
+    "thai": "น้ำฝน",
+    "phon": "náam fǒn",
+    "en": "rain",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ลม",
+    "phon": "lom",
+    "en": "wind",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ท้องฟ้า",
+    "phon": "thɔ́ng-fáa",
+    "en": "sky",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ต้นไม้",
+    "phon": "dtɔ̂n-máai",
+    "en": "tree",
+    "tags": [
+      "Nature"
+    ]
+  },
+  {
+    "thai": "ยา",
+    "phon": "yaa",
+    "en": "medicine",
+    "tags": [
+      "Health"
+    ]
+  },
+  {
+    "thai": "หมอ",
+    "phon": "mɔ̌ɔ",
+    "en": "doctor",
+    "tags": [
+      "Health"
+    ]
+  },
+  {
+    "thai": "โรค",
+    "phon": "rók",
+    "en": "disease",
+    "tags": [
+      "Health"
+    ]
+  },
+  {
+    "thai": "ออกกำลังกาย",
+    "phon": "awk gam-lang-gaai",
+    "en": "exercise",
+    "tags": [
+      "Health"
+    ]
+  },
+  {
+    "thai": "รักษา",
+    "phon": "rák-sǎa",
+    "en": "treat",
+    "tags": [
+      "Health"
+    ]
+  },
+  {
+    "thai": "ของขวัญ",
+    "phon": "kɔ̌ŋ khwân",
+    "en": "gift",
+    "tags": [
+      "Social"
+    ]
+  },
+  {
+    "thai": "งานแต่งงาน",
+    "phon": "ngâan tàeng ngaan",
+    "en": "wedding",
+    "tags": [
+      "Social"
+    ]
+  },
+  {
+    "thai": "เพื่อนร่วมงาน",
+    "phon": "pɯ̀an râwng ngaan",
+    "en": "colleague",
+    "tags": [
+      "Social"
+    ]
   }
 ]
