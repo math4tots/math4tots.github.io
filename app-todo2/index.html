@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>TODO App</title>
+</head>
+
+<body>
+  <div class="task-list">
+    <button id="newTaskButton" class="new-task-button">New Task</button>
+    <ul id="tasks"></ul>
+  </div>
+
+  <!-- New Task Modal -->
+  <div id="newTaskModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeNewTaskModal">&times;</span>
+      <h2>Create a New Task</h2>
+      <input type="text" id="taskTitle" placeholder="Title">
+      <input type="date" id="taskDate" placeholder="Date">
+      <input type="text" id="taskTags" placeholder="Tags (comma separated)">
+      <textarea id="taskDescription" placeholder="Description"></textarea>
+      <button id="saveNewTask">Save</button>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div id="editTaskModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeEditTaskModal">&times;</span>
+      <h2>Edit Task</h2>
+      <p id="editTaskID"></p>
+      <input type="text" id="editTaskTitle" placeholder="Title">
+      <input type="date" id="editTaskDate" placeholder="Date">
+      <input type="text" id="editTaskTags" placeholder="Tags (comma separated)">
+      <textarea id="editTaskDescription" placeholder="Description"></textarea>
+      <button id="updateTask">Update</button>
+      <button id="deleteTask" class="delete-button">Delete</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
