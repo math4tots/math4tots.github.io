@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="todo-list">
+    <h1>Tasks</h1>
+    <button id="add-task-button">Add Task</button>
+    <div id="task-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="task-form">
+          <input type="text" id="title" placeholder="Title" required>
+          <input type="date" id="due-date">
+          <input type="text" id="tags" placeholder="Tags (comma-separated)">
+          <textarea id="description" placeholder="Description"></textarea>
+          <button type="submit">Add Task</button>
+        </form>
+      </div>
+    </div>
+    <div id="edit-task-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-edit-task-modal">&times;</span>
+        <h2>Edit Task</h2>
+        <form id="edit-task-form">
+          <input type="text" id="edit-title" placeholder="Title" required>
+          <input type="date" id="edit-due-date">
+          <input type="text" id="edit-tags" placeholder="Tags (comma-separated)">
+          <textarea id="edit-description" placeholder="Description"></textarea>
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+    <ul id="tasks">
+      <!-- Existing tasks will be displayed here -->
+    </ul>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #333;
+  /* Darker background color */
+  color: white;
+  /* Text color */
+  margin: 0;
+  padding: 0;
+}
+
+#todo-list {
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #444;
+  /* Container background color */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #555;
+  /* Border color */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #555;
+  /* Input field background color */
+  color: white;
+  /* Text color in the input field */
+  border: none;
+}
+
+button {
+  background-color: #FF5733;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Your existing CSS styles here */
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: #333;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  max-width: 90%;
+  /* Set the maximum width to 90% of the screen width */
+  color: white;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Adjust the width of the form elements within the modal */
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content input[type="text"],
+.modal-content textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Draggable Dots */
+.task-drag-handle {
+  cursor: move;
+  display: inline-block;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0 10px;
+}
+
+/* Your other CSS styles here */
