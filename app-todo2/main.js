@@ -219,21 +219,34 @@ function createTaskItem(task, index) {
   return taskItem;
 }
 
-// Function to load tasks from localStorage and display them
-function loadTasks() {
-  // Function to load tasks from localStorage and display them
+// Function to handle the search functionality
+function searchTasks(searchTerm) {
   const tasksContainer = document.getElementById("tasks");
   tasksContainer.innerHTML = ""; // Clear the existing list
 
-  // Retrieve tasks from localStorage
   /** @type {Task[]} */
   const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Render each task using the createTaskItem function
   storedTasks.forEach((task, index) => {
-    const taskItem = createTaskItem(task, index);
-    tasksContainer.appendChild(taskItem);
+    if (task.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+      // Only display tasks whose title matches the search term
+      const taskItem = createTaskItem(task, index);
+      tasksContainer.appendChild(taskItem);
+    }
   });
+}
+
+// Function to load tasks from localStorage and display them
+function loadTasks() {
+  const searchInput = document.getElementById("taskSearch");
+
+  searchInput.addEventListener("input", () => {
+    const searchTerm = searchInput.value;
+    searchTasks(searchTerm);
+  });
+
+  // Initially load all tasks when the page loads
+  searchTasks(""); // Pass an empty search term to display all tasks
 }
 
 document.addEventListener("DOMContentLoaded", () => {
