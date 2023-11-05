@@ -1,44 +1,183 @@
-/* Basic styling */
+/* General Styles */
 body {
+  background-color: #1e1e1e;
+  color: #ffffff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-.task-list {
-  background-color: #f0f0f0;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  height: 100vh;
-  overflow: scroll;
 }
 
-.new-task-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+/* Task List Styles */
+.task-list {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.task-item {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  font-weight: bold;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.task-date {
+  flex: 1;
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.task-tags {
+  flex: 2;
+  font-size: 0.9em;
+}
+
+.task-description {
+  flex: 3;
+  font-size: 0.9em;
+}
+
+.edit-task {
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-/* Add more styles as needed */
+.edit-task:hover {
+  background-color: #0056b3;
+}
 
-/* Modal styles (you can customize further) */
+/* New Task Modal Styles */
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Add more modal styles as needed */
+.modal-content {
+  /* Set dark background and light text for inputs and textarea */
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Style for input text, input date, and textarea */
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content textarea {
+  background-color: #444;
+  /* Dark background color for input fields and textarea */
+  color: #fff;
+  /* Light text color for input fields and textarea */
+  border: 1px solid #555;
+  /* Border color for input fields and textarea */
+  padding: 5px;
+  /* Spacing for input fields and textarea */
+  border-radius: 5px;
+  /* Rounded corners */
+  width: 100%;
+}
+
+/* "Save" button style */
+#saveNewTask,
+#updateTask,
+#deleteTask {
+  background-color: #007bff;
+  /* Dark blue background color for buttons */
+  color: #fff;
+  /* Light text color for buttons */
+  border: none;
+  /* Remove button border */
+  padding: 10px 20px;
+  /* Padding for buttons */
+  border-radius: 5px;
+  /* Rounded corners for buttons */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+  margin-right: 10px;
+  /* Add some margin to separate buttons */
+}
+
+/* Hover effect for buttons */
+#saveNewTask:hover,
+#updateTask:hover,
+#deleteTask:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+.close {
+  color: #fff;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff3333;
+}
+
+/* New Task and Edit Task Buttons */
+.new-task-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.new-task-button:hover {
+  background-color: #0056b3;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Edit Task Modal Styles */
+#editTaskModal {
+  display: none;
+}
