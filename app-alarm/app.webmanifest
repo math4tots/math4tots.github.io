@@ -1,0 +1,23 @@
+{
+    "name": "Alarm Clock App",
+    "short_name": "Alarm",
+    "description": "A Basic Alarm Clock App",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/app-alarm/index.html",
+    "display": "standalone",
+    "theme_color": "#012A34",
+    "background_color": "#012A34"
+}
