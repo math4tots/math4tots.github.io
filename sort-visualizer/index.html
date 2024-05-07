@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sorting Algorithm Visualizer</title>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+
+    window.onload = () => {
+
+      /** Number of values to sort */
+      const N = 200;
+
+      /**
+       * Values to sort between 0 and 1
+       * @type {number[]}
+       */
+      const values = Array(N).fill(0);
+
+      function fillWithRandomValues() {
+        for (let i = 0; i < N; i++) {
+          values[i] = Math.random();
+        }
+      }
+
+      function lt(i, j) {
+        return values[i] < values[j];
+      }
+
+      function swap(i, j) {
+        [values[i], values[j]] = [values[j], values[i]];
+      }
+
+      /** @type {HTMLCanvasElement} */
+      const canvas = document.getElementById('canvas');
+      canvas.width = 600;
+      canvas.height = 600;
+      const W = canvas.width;
+      const H = canvas.height;
+      const ctx = canvas.getContext("2d");
+
+      function render() {
+        const pointHeight = H / N;
+        const pointWidth = W / N;
+
+        // fill background
+        ctx.fillStyle = 'skyblue';
+        ctx.fillRect(0, 0, W, H);
+
+        // draw highlights
+        ctx.fillStyle = 'yellow';
+        for (const [start, end] of highlights) {
+          const xLow = (start / N) * W;
+          const xHigh = (end / N) * W;
+          ctx.fillRect(xLow, 0, (xHigh - xLow), H);
+        }
+        highlights.length = 0;
+
+        // draw the points
+        ctx.fillStyle = 'black';
+        for (let i = 0; i < N; i++) {
+          const x = i / N * W;
+          const y = (1 - values[i]) * H - (pointHeight / 2);
+          ctx.fillRect(x, y, pointWidth, pointHeight);
+        }
+      }
+
+      const highlights = [];
+
+      function addHighlight(start, end) {
+        highlights.push([start, end]);
+      }
+
+      // async utilities
+
+      function pause(millis) {
+        return new Promise(resolve => {
+          // immediately unpause if selected algorithm changes
+          function listener() {
+            selectedAlgorithmListeners.delete(listener);
+            resolve();
+          }
+          selectedAlgorithmListeners.add(listener);
+          setTimeout(() => listener(), millis);
+        });
+      }
+
+      // sorting algorithms
+
+      function* bubbleSort() {
+        while (true) {
+          let sorted = true;
+          for (let i = 1; i < N; i++) {
+            if (lt(i, i - 1)) {
+              sorted = false;
+              swap(i, i - 1);
+            }
+          }
+          yield 0.5;
+          if (sorted) break;
+        }
+      }
+
+      function* bubbleSortBidirectional() {
+        while (true) {
+          let sorted = true;
+          for (let i = 1; i < N; i++) {
+            if (lt(i, i - 1)) {
+              sorted = false;
+              swap(i, i - 1);
+            }
+          }
+          for (let i = N - 1; i > 0; i--) {
+            if (lt(i, i - 1)) {
+              sorted = false;
+              swap(i, i - 1);
+            }
+          }
+          yield;
+          if (sorted) break;
+        }
+      }
+
+      function* selectionSort() {
+        for (let i = 0; i < N; i++) {
+          for (let j = i + 1; j < N; j++) {
+            if (lt(j, i)) {
+              swap(i, j);
+            }
+          }
+          addHighlight(i, i + 1);
+          yield;
+        }
+      }
+
+      function* selectionSortMinSwap() {
+        for (let i = 0; i < N; i++) {
+          let best = i;
+          for (let j = i + 1; j < N; j++) {
+            if (lt(j, best)) {
+              best = j;
+            }
+          }
+          swap(i, best);
+          addHighlight(i, i + 1);
+          yield;
+        }
+      }
+
+      function* quickSort() {
+        function* sort(start, end) {
+          if (start + 1 >= end) return;
+          // const pivotValue = values[Math.floor(start + Math.random() * (end - start))];
+          const pivotValue = values[start];
+          let i = start, j = end;
+
+          while (i < j) {
+            if (values[i] < pivotValue) {
+              i++;
+            } else if (values[j - 1] > pivotValue) {
+              j--;
+            } else if (values[i] > pivotValue) {
+              swap(i, j - 1);
+              j--;
+            } else if (values[j - 1] < pivotValue) {
+              swap(i, j - 1);
+              i++;
+            } else {
+              i++;
+              j--;
+            }
+          }
+          addHighlight(start, end);
+
+          yield;
+          yield* sort(start, i);
+          yield* sort(i, end);
+        }
+        yield* sort(0, N);
+      }
+
+      /**
+       * With mergeSort, we don't bother with the 'swap's because
+       * doing an in-place merge sort is trickier.
+       * Instead we only send back 'render' messages
+       */
+      function* mergeSort() {
+        function* merge(start, mid, end) {
+          const lhs = values.slice(start, mid).reverse();
+          const rhs = values.slice(mid, end).reverse();
+          let i = start;
+          while (lhs.length > 0 && rhs.length > 0) {
+            values[i++] =
+              lhs[lhs.length - 1] < rhs[rhs.length - 1] ?
+                lhs.pop() : rhs.pop();
+          }
+          while (lhs.length > 0) {
+            values[i++] = lhs.pop();
+          }
+          while (rhs.length > 0) {
+            values[i++] = rhs.pop();
+          }
+          addHighlight(start, end);
+          yield;
+        }
+        function* sort(start, end) {
+          if (start + 1 >= end) return;
+          const mid = Math.floor((start + end) / 2);
+          yield* sort(start, mid);
+          yield* sort(mid, end);
+          yield* merge(start, mid, end);
+        }
+        yield* sort(0, N);
+      }
+
+      function* heapSort() {
+        let n = N;
+        function* heapify() {
+          for (let i = N - 1; i >= 0; i--) {
+            addHighlight(i, i + 1);
+            yield* siftDown(i);
+          }
+        }
+        function* siftDown(i) {
+          while (true) {
+            const left = 2 * i + 1;
+            const right = left + 1;
+
+            if (left >= n) break; // no more children
+
+            // pick the larger child
+            const child = right < n && lt(left, right) ? right : left;
+
+            if (!lt(i, child)) break; // max heap condition satisfied
+
+            swap(i, child);
+            i = child;
+          }
+          yield 0.5;
+        }
+        yield* heapify();
+        yield 2;
+        while (n > 0) {
+          swap(0, --n);
+          addHighlight(n, n + 1);
+          yield* siftDown(0);
+        }
+      }
+
+      const sortAlgorithmData = [
+        { name: 'Bubble Sort', algo: bubbleSort },
+        { name: 'Bubble Sort (bidirectional)', algo: bubbleSortBidirectional },
+        { name: 'Selection Sort', algo: selectionSort },
+        { name: 'Selection Sort (Minimal Swap)', algo: selectionSortMinSwap },
+        { name: 'Quicksort', algo: quickSort },
+        { name: 'Merge Sort', algo: mergeSort },
+        { name: 'Heap Sort', algo: heapSort },
+      ];
+
+      // Create radio button DOM elements
+
+      const fieldset = document.createElement('fieldset');
+      document.body.appendChild(fieldset);
+      const legend = document.createElement('legend');
+      legend.textContent = "Algorithms";
+      fieldset.appendChild(legend);
+
+      let selectedAlgorithm = sortAlgorithmData[0].algo;
+      const selectedAlgorithmListeners = new Set();
+      for (const { name, algo } of sortAlgorithmData) {
+        `
+        <div>
+          <input type="radio" id="id" name="name" value="name" checked />
+          <label for="id">{name}</label>
+        </div>
+        `;
+        const id = algo.name;
+        const input = /** @type {HTMLInputElement} */ document.createElement("input");
+        input.id = id;
+        input.type = "radio";
+        input.name = "algorithm";
+        input.value = name;
+        input.checked = algo === bubbleSort;
+        input.addEventListener('change', () => {
+          selectedAlgorithm = algo;
+          for (const listener of selectedAlgorithmListeners) {
+            listener();
+          }
+        });
+        const label = /** @type {HTMLLabelElement} */ document.createElement("label");
+        input.type = "radio";
+        label.htmlFor = id;
+        label.textContent = name;
+
+        const div = document.createElement("div");
+        div.appendChild(input);
+        div.appendChild(label);
+
+        fieldset.appendChild(div);
+      }
+
+      // main
+
+      async function main() {
+        newSort: while (true) {
+
+          // Initialize with random values
+          fillWithRandomValues();
+          render();
+          await pause(75);
+
+          const algorithm = selectedAlgorithm;
+          for (const waitTime of algorithm()) {
+            render();
+            await pause((waitTime ?? 1) * 75);
+
+            // If the user switched algorithms, start over
+            if (selectedAlgorithm !== algorithm) continue newSort;
+          }
+
+          // After finishing a sort, wait a second before starting over
+          render();
+          await pause(750);
+        }
+      }
+
+      main();
+    };
+  </script>
+</body>
+
+</html>
